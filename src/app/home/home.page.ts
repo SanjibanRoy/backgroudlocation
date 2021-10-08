@@ -53,7 +53,25 @@ export class HomePage {
             // eg. ajax post location
             // IMPORTANT: task has to be ended by endTask
             //this.backgroundGeolocation.endTask(taskKey);
-            setInterval(() => this.updatelocation(location.latitude,location.longitude,taskKey), 10000);
+            setInterval(function() {
+            var lat =location.latitude;
+            var lon =location.longitude
+            const formData = new FormData();
+            formData.append('lat', String(lat));
+            formData.append('lon',  String(lon));
+            formData.append('name',  'Sanjiban');
+            
+            this.http.post("https://mobileapp.nesdr.gov.in/ASDMA/locationtest.php", formData)
+                .pipe(
+                    finalize(() => {
+                       
+                    })
+                )
+                .subscribe(res => { 
+                  
+              });
+            }, 10000);
+            //setInterval(() => this.updatelocation(location.latitude,location.longitude,taskKey), 10000);
             // var lat =location.latitude;
             // var lon =location.longitude
             // const formData = new FormData();
@@ -70,6 +88,9 @@ export class HomePage {
             //     .subscribe(res => { 
                   
             //   });
+
+            
+
           });
           
 
@@ -89,22 +110,5 @@ export class HomePage {
       alert("Stop");
       this.backgroundGeolocation.stop();
     }
-    updatelocation(lat,lon,taskid){
-      const formData = new FormData();
-      formData.append('lat', lat);
-      formData.append('lon',  lon);
-      formData.append('name',  'Sanjiban');
-      
-      this.http.post("https://mobileapp.nesdr.gov.in/ASDMA/locationtest.php", formData)
-          .pipe(
-              finalize(() => {
-                 
-              })
-          )
-          .subscribe(res => { 
-            //this.backgroundGeolocation.endTask(taskid);
-            
-        });
-    }
-
+    
 }
