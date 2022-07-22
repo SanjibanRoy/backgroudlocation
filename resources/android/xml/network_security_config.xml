@@ -3,5 +3,6 @@
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">localhost</domain>
             <domain includeSubdomains="true">192.168.0.100</domain>
+             <domain includeSubdomains="true">nodeserver.nesdr.gov.in</domain>
     </domain-config>
 </network-security-config>

@@ -27,7 +27,7 @@ export class HomePage {
   // };
   requestOptions:any
   config: BackgroundGeolocationConfig = {
-    desiredAccuracy: 100,
+    desiredAccuracy: 1000,
     stationaryRadius: 1, //I reduce this from 20 to 2
     distanceFilter: 3, //I reduce this from 30 to 3
     interval: 1000, //This is missing from example
@@ -45,7 +45,7 @@ export class HomePage {
     postTemplate: {
       lat: '@latitude',
       lon: '@longitude',
-      foo: 'Sanjiban' // you can also add your own properties
+      foo: 'Nilay' // you can also add your own properties
     }
     
   };
